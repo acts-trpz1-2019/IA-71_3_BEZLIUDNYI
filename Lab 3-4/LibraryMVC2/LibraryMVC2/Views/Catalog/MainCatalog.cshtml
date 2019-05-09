@@ -1,0 +1,192 @@
+﻿@using LibraryMVC2.Models
+@model CatalogViewModel
+@{
+    ViewBag.Title = "Catalog";
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+}
+<div class="billetWrapper">
+    <div class="small_article_container">
+        <div class="genres_vertical_billetBlock billetBlock">
+            <div class="billetBlock_title">
+                <div class="billetBlock_title_theme">
+                    <p class="left_title">Жанры</p>
+                </div>
+                <div class="billetBlock_title_info">
+                    <p>@Model.Genres.Count() жанров</p>
+                </div>
+            </div>
+            <div class="genres">
+                <ul>
+                    @foreach(Genre g in Model.Genres)
+                    {
+                        <li class="genreItem">
+                            <a class="goto_genre_link @(g == Model.SelectedGenre ? "genre_selected" : "")" 
+                               href="@Url.Action("MainCatalogByGenre", new { genreId = g.Id })">@g.Name</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="big_article_container">
+        <div class="genres_horizontal_billetBlock billetBlock">
+            <div class="billetBlock_title">
+                <div class="billetBlock_title_theme">
+                    <p class="left_title">Жанры</p>
+                </div>
+                <div class="billetBlock_title_info">
+                    <p>@Model.Genres.Count() жанров</p>
+                </div>
+            </div>
+            <div class="genresCard_list">
+                @foreach (Genre g in Model.Genres)
+                {
+                    <div class="genreCard">
+                        <div class="genreCard_container">
+                            <div class="genreCard_info">
+                                <a class="goto_genre_link @(g == Model.SelectedGenre ? "genreCard_selected" : "")" 
+                                   href="@Url.Action("MainCatalogByGenre", new { genreId = g.Id })">@g.Name</a>
+                            </div>
+                            <div class="genreCard_image">
+                                <img src=@g.CoverFilePath>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="billetBlock">
+            <div class="billetBlock_title">
+                <div class="billetBlock_title_theme">
+                    <p class="left_title">Все книги</p>
+                    <p class="right_title">
+                        @if (Model.SelectedGenre == null)
+                        {
+                            if (Model.SearchString == null)
+                            {
+                                <a class="goto_theme_link"
+                                   href="@Url.Action("BookCatalog", new { selectionType = "text" })">></a>
+                            }
+                            else
+                            {
+                                <a class="goto_theme_link"
+                                   href="@Url.Action("BookCatalogBySearch", new { search = Model.SearchString, selectionType = "text" })">></a>
+                            }
+                        }
+                        else
+                        {
+                            <a class="goto_theme_link"
+                               href="@Url.Action("BookCatalogByGenre", new { genreId = Model.SelectedGenre.Id, selectionType = "text" })">></a>
+                        }
+                    </p>
+                </div>
+                <div class="billetBlock_title_info">
+                    <p>@Model.TextBooks.Count() книг</p>
+                </div>
+            </div>
+            <div class="booksCard_list">
+                @foreach (TextBook b in Model.TextBooks.Take(10))
+                {
+                    <a class="goto_book_link" href="@Url.Action("BookInfo", new { book_id = b.Id, type = "text" })">
+                        <div class="bookCard">
+                            <div class="bookCard_image">
+                                <img src=@b.CoverFilePath>
+                            </div>
+                            <div class="bookCard_info">
+                                <h3 class="book_name">@b.BookName</h3>
+                                <p class="book_author">Автор: @b.Author</p>
+                                <p class="book_rate">Рейтинг: @b.Rate </p>
+                                <p class="book_pages">Страниц: @b.Pages</p>
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+        <div class="billetBlock">
+            <div class="billetBlock_title">
+                <div class="billetBlock_title_theme">
+                    <p class="left_title">Все аудиокниги</p>
+                    <p class="right_title">
+                        @if (Model.SelectedGenre == null)
+                        {
+                            if (Model.SearchString == null)
+                            {
+                                <a class="goto_theme_link"
+                                   href="@Url.Action("BookCatalog", new { selectionType = "audio" })">></a>
+                            }
+                            else
+                            {
+                                <a class="goto_theme_link"
+                                   href="@Url.Action("BookCatalogBySearch", new { search = Model.SearchString, selectionType = "audio" })">></a>
+                            }
+                        }
+                        else
+                        {
+                            <a class="goto_theme_link"
+                               href="@Url.Action("BookCatalogByGenre", new { genreId = Model.SelectedGenre.Id, selectionType = "audio" })">></a>
+                        }
+                    </p>
+                </div>
+                <div class="billetBlock_title_info">
+                    <p>@Model.AudioBooks.Count() аудиокниг</p>
+                </div>
+            </div>
+            <div class="booksCard_list">
+                @foreach (AudioBook b in Model.AudioBooks.Take(10))
+                {
+                    <a class="goto_book_link" href="@Url.Action("BookInfo", new { book_id = b.Id, type = "audio" })">
+                        <div class="bookCard">
+                            <div class="bookCard_image">
+                                <img src=@b.CoverFilePath>
+                            </div>
+                            <div class="bookCard_info">
+                                <h3 class="book_name">@b.BookName</h3>
+                                <p class="book_author">Автор: @b.Author</p>
+                                <p class="book_rate">Рейтинг: @b.Rate </p>
+                                <p class="book_pages">Длина:  @TimeSpan.FromSeconds(b.ReadingTime)</p>
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+        @if (Model.Description != null)
+        {
+            <div class="article_text_blocks">
+                @if (Model.Description.Title != null)
+                {
+                    <h2>@Model.Description.Title</h2>
+                }
+                <div class="article_text_divider">
+                    <section class="left_section">
+                        @for (int i = 0; i <= (Model.Description.TitledInfoList.Count - 1) / 2; i++)
+                        {
+                            if (Model.Description.TitledInfoList[i].Title != null)
+                            {
+                                <h3>@Model.Description.TitledInfoList[i].Title</h3>
+                            }
+                            foreach (string infoBlock in Model.Description.TitledInfoList[i].InfoBlocks)
+                            {
+                                <p>@infoBlock</p>
+                            }
+                        }
+                    </section>
+                    <section class="right_section">
+                        @for (int i = (Model.Description.TitledInfoList.Count - 1) / 2 + 1; i < Model.Description.TitledInfoList.Count; i++)
+                        {
+                            if (Model.Description.TitledInfoList[i].Title != null)
+                            {
+                                <h3>@Model.Description.TitledInfoList[i].Title</h3>
+                            }
+                            foreach (string infoBlock in Model.Description.TitledInfoList[i].InfoBlocks)
+                            {
+                                <p>@infoBlock</p>
+                            }
+                        }
+                    </section>
+                </div>
+            </div>
+        }
+    </div>
+</div>

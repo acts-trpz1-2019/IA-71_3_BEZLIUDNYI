@@ -1,0 +1,95 @@
+﻿@using LibraryMVC2.Models
+@using LibraryMVC2.Helpers
+@model BookInfoContainer
+@{
+    ViewBag.Title = "BookInfo";
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+}
+
+<div class="billetWrapper">
+    <div class="full_article_container">
+        <h2>Информация о книге</h2>
+        @if (Model.Type == "text")
+        {
+            <p>Название книги: @Model.TextBook.BookName</p>
+            <p>Автор: @Model.TextBook.Author</p>
+            <p>
+                Жанры:
+                @foreach (Genre g in Model.TextBook.Genres)
+                {
+                    <span>"@g.Name" </span>
+                }
+            </p>
+            <p>Страниц: @Model.TextBook.Pages</p>
+            <p>Рейтинг: @Model.TextBook.Rate</p>
+            <p>Год публикации на сайте: @Model.TextBook.PublishingTime.Year</p>
+            if (Model.TextBook.Description != null)
+            {
+                <p>О книге: @Model.TextBook.Description</p>
+            }
+
+            if (User.IsInRole("admin") || UserHelper.GetUserSubscriptionType().Level >= Model.TextBook.SubscriptionType.Level)
+            {
+                using (Html.BeginForm("ReadBook", "Catalog", new { id = Model.TextBook.Id }))
+                {
+                    <input type="submit" value="Читать" />
+                }
+            }
+            else
+            {
+                <p class="warning-text">Эта книга доступна только за подпиской "@Model.TextBook.SubscriptionType.Name"</p>
+            }
+
+            if (User.IsInRole("admin"))
+            {
+                using (Html.BeginForm("EditTextBook", "ManageModel", new { id = Model.TextBook.Id }))
+                {
+                    <input type="submit" value="Редактировать" />
+                }
+            }
+        }
+        else if (Model.Type == "audio")
+        {
+            <p>Название аудиокниги: @Model.AudioBook.BookName</p>
+            <p>Автор: @Model.AudioBook.Author</p>
+            <p>
+                Жанры:
+                @foreach (Genre g in Model.AudioBook.Genres)
+                {
+                    <span>"@g.Name" </span>
+                }
+            </p>
+            <p>Длительность: @TimeSpan.FromSeconds(Model.AudioBook.ReadingTime)</p>
+            <p>Рейтинг: @Model.AudioBook.Rate</p>
+            <p>Год публикации на сайте: @Model.AudioBook.PublishingTime.Year</p>
+            if (Model.AudioBook.Description != null)
+            {
+                <p>О книге: @Model.AudioBook.Description</p>
+            }
+
+            if (User.IsInRole("admin") || UserHelper.GetUserSubscriptionType().Level >= Model.AudioBook.SubscriptionType.Level)
+            {
+                using (Html.BeginForm("ListenBook", "Catalog", new { id = Model.AudioBook.Id }))
+                {
+                    <input type="submit" value="Слушать" />
+                }
+            }
+            else
+            {
+                <p class="warning-text">Эта аудиокнига доступна только за подпиской "@Model.AudioBook.SubscriptionType.Name"</p>
+            }
+            <br /><br />
+            if (User.IsInRole("admin"))
+            {
+                using (Html.BeginForm("EditAudioBook", "ManageModel", new { id = Model.AudioBook.Id }))
+                {
+                    <input type="submit" value="Редактировать" />
+                }
+            }
+            <br /><br />
+        }
+    </div>
+</div>
+
+
+

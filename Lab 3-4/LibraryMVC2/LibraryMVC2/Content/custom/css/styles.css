@@ -1,0 +1,712 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans');
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-width: 350px;
+    min-height: 100%;
+}
+
+a {
+    outline: 0;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+/*--------------------------------*/
+
+.warning-text {
+    color: orange;
+    font-weight: bold;
+}
+
+.appContainer {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(225, 218, 208, 0.2);
+    font-family: Fira Sans, sans-serif;
+}
+
+.header_container {
+    width: 85%;
+    max-width: 1100px;
+    min-width: 300px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.header_menu_wrapper {
+    display: flex;
+}
+
+.header_logo {
+    position: absolute;
+    left: 0;
+    top: 28px;
+    height: 38px;
+}
+
+    .header_logo a {
+        display: block;
+        float: right;
+        height: 28px;
+        padding: 5px 10px;
+        font-weight: bold;
+        font-size: 1.25em;
+        color: #4b484b;
+        letter-spacing: 3px;
+        text-align: center;
+    }
+
+.header_menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header_menu li {
+    display: inline-block;
+    padding: 10px 0;
+}
+
+.header_search input[type="text"] {
+    float: left;
+    width: 70%;
+    height: 20px;
+    margin: 5px 0;
+    border: 2px solid gray;
+    border-radius: 10px;
+}
+
+.header_search input[type="submit"] {
+    float: right;
+    width: 20%;
+    height: 25px;
+    border: 2px solid gray;
+    border-radius: 10px;
+    margin: 5px 0;
+}
+
+.header_entrance {
+    position: absolute;
+    right: 0;
+    top: 28px;
+    padding: 5px 0;
+}
+
+.header_link,
+.goto_theme_link {
+    color: #e77b25;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.goto_genre_link,
+.footer_theme_link {
+    color: #be4e01;
+    text-decoration: none;
+}
+
+.goto_theme_link {
+    float: right;
+}
+
+.topBlock {
+    width: 100%;
+    min-height: 425px;
+    background: linear-gradient(#e25f1d, #f4cc3b);
+}
+
+.topBlock_container {
+    width: 85%;
+    margin: 0 auto;
+    padding-top: 40px;
+    display: flex;
+}
+
+.topBlock_title {
+    font-weight: bold;
+    line-break: normal;
+}
+
+.topBlock_future_list {
+    width: 100%;
+    padding-top: 40px;
+    font-weight: 600;
+}
+
+    .topBlock_future_list > ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+.topBlock_future_Item {
+    margin-right: 15px;
+}
+
+.topBlock_picture {
+    width: 40%;
+    padding-top: 40px;
+}
+
+    .topBlock_picture img {
+        display: block;
+        margin: 0 auto;
+    }
+
+.topBlock_button_list {
+    width: 100%;
+    margin: 40px 0;
+}
+
+.subscription_button {
+    height: 60px;
+    width: 250px;
+    background: linear-gradient(#e28b1e, #e22717);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+}
+
+.billetWrapper {
+    width: 85%;
+    margin: 0 auto;
+    display: flex;
+    padding-bottom: 20px;
+}
+
+.small_article_container {
+    width: 25%;
+    height: 100%;
+    margin-right: 20px;
+}
+
+.big_article_container {
+    height: 100%;
+}
+
+.full_article_container {
+    width: 100%;
+    height: 100%;
+}
+
+.billetBlock {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px gray;
+    margin: 30px 0;
+    padding: 20px;
+}
+
+.billetBlock_title p {
+    margin: 0;
+}
+
+.billetBlock_title {
+    padding-bottom: 20px;
+}
+
+.billetBlock_title_theme {
+    display: flex;
+    justify-content: space-between;
+}
+
+    .billetBlock_title_theme .left_title {
+        font-weight: bold;
+        font-size: 1.25em;
+    }
+
+.billetBlock_title_info {
+    margin: 10px 0;
+}
+
+.booksCard_list,
+.genresCard_list {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.bookCard {
+    display: inline-block;
+    margin: 10px;
+    width: 180px;
+    height: 360px;
+    box-shadow: 2px 2px 5px black;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.bookCard_image img {
+    width: 100%;
+    height: 230px;
+    border-radius: 10px 10px 0 0;
+}
+
+.bookCard_info {
+    padding: 0 10px;
+}
+
+    .bookCard_info h3 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .bookCard_info p {
+        color: dimgrey;
+    }
+
+.genreCard {
+    display: inline-block;
+    margin: 10px;
+    width: 280px;
+    height: 120px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px gray, -2px 2px 2px gray;
+}
+
+.genreCard_container {
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.genreCard_image {
+    background: linear-gradient(to top right, #ffc400, #ff8b00);
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+
+    .genreCard_image img {
+        display: block;
+        width: auto;
+        height: 60px;
+    }
+
+.genreCard_info {
+    width: 160px;
+    white-space: normal;
+}
+
+    .genreCard_info a {
+        font-weight: bold;
+    }
+
+.genres > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.genreItem {
+    margin: 16px 0;
+}
+
+.article_text_blocks {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.article_text_divider {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.article_text_blocks section {
+    margin-bottom: 30px;
+}
+
+.top_footer {
+    background-color: #f5ce9b;
+    border-top: 1px solid #e16404;
+    border-bottom: 1px solid #e16404;
+}
+
+.top_footer_container,
+.bottom_footer_container {
+    width: 85%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.footer_theme_container {
+    margin: 20px 20px 20px 0;
+    border-top: 1px solid black;
+}
+
+.footer_theme_list {
+    list-style: none;
+    padding: 0;
+}
+
+.footer_theme_item {
+    margin: 16px 0;
+}
+
+.bottom_footer {
+    height: 80px;
+    background-color: white;
+    font-weight: bold;
+}
+
+.contacts {
+    margin-top: 20px;
+    display: flex;
+    justify-content: stretch;
+}
+
+    .contacts > p {
+        margin: 0 10px 0 0;
+        padding: 10px 10px;
+    }
+
+.contacts_phone {
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.books-grid {
+    display: grid;
+    grid-gap: 15px;
+    margin: 15px 0;
+}
+
+.book-item {
+    width: 100%;
+    min-width: 280px;
+    max-width: 450px;
+    justify-self: center;
+}
+
+    .book-item .bookCard {
+        display: flex;
+        width: 100%;
+        height: 220px;
+        margin: 0;
+    }
+
+    .book-item .bookCard_image {
+        padding: 10px;
+    }
+
+        .book-item .bookCard_image img {
+            width: 130px;
+            height: 100%;
+            border-radius: 10px;
+        }
+
+.goto_book_link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.paginator {
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+    .paginator a {
+        padding: 0.5em 1em;
+        color: initial;
+        text-decoration: none;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+        .paginator a:hover {
+            background-color: darkgray;
+        }
+
+.selected_page {
+    background-color: orange;
+    color: white;
+}
+
+.subscription_catalog {
+    background-color: white;
+    border-collapse: collapse;
+    box-shadow: 3px 3px 5px black;
+}
+
+    .subscription_catalog thead {
+        background-color: #f5ce9b;
+    }
+
+    .subscription_catalog td,
+    .subscription_catalog th {
+        border: 1px solid black;
+        padding: 10px;
+    }
+
+    .subscription_catalog tr:hover {
+        border-color: aqua;
+    }
+
+/* SMARTPHONES PORTRAIT */
+@media only screen and (min-width: 350px) {
+    .header_container {
+        height: 150px;
+    }
+
+    .header_menu {
+        width: 100%;
+    }
+
+    .header_search {
+        width: 100%;
+    }
+
+    .header_menu_wrapper {
+        padding-top: 64px;
+        flex-direction: column-reverse;
+    }
+
+    .topBlock_container {
+        flex-direction: column;
+    }
+
+    .topBlock_picture {
+        width: 100%;
+    }
+
+    .topBlock_info {
+        width: 100%;
+    }
+
+    .topBlock_title {
+        width: 80%;
+        font-size: 1.75em;
+    }
+
+    .topBlock_future_list {
+        width: 100%;
+    }
+
+        .topBlock_future_list > ul {
+            flex-direction: column;
+        }
+
+    .topBlock_future_Item {
+        margin: 10px 0;
+    }
+
+        .topBlock_future_Item img {
+            width: 16px;
+            height: 16px;
+            float: left;
+        }
+
+        .topBlock_future_Item p {
+            float: left;
+            margin: 0;
+            padding-left: 10px;
+        }
+
+    .small_article_container {
+        display: none;
+    }
+
+    .big_article_container {
+        width: 100%;
+    }
+
+    .genres_horizontal_billetBlock {
+        display: block;
+    }
+
+    .article_text_divider {
+        flex-direction: column;
+    }
+
+        .article_text_divider section {
+            width: 100%;
+        }
+
+    .phone {
+        display: initial;
+    }
+
+    .laptop {
+        display: none;
+    }
+
+    .top_footer_container {
+        flex-direction: column;
+    }
+
+    .contacts {
+        flex-direction: column;
+    }
+}
+
+/* SMARTPHONES LANDSCAPE */
+@media only screen and (min-width: 480px) {
+
+    .topBlock_info {
+        width: 60%;
+        margin: 0 auto;
+    }
+
+    .article_text_divider {
+        flex-direction: row;
+    }
+
+        .article_text_divider section {
+            width: 48%;
+        }
+
+    .contacts {
+        flex-direction: row;
+    }
+
+    .books-grid {
+        grid-template-columns: auto;
+    }
+}
+
+@media only screen and (min-width: 660px) {
+
+    .books-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* TABLETS PORTRAIT */
+@media only screen and (min-width: 768px) {
+
+    .topBlock_info {
+        width: 100%;
+    }
+
+    .topBlock_title {
+        width: 60%;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .topBlock_future_list > ul {
+        flex-direction: row;
+    }
+
+    .topBlock_future_Item {
+        text-align: center;
+        margin-right: 15px;
+    }
+
+        .topBlock_future_Item img {
+            width: 28px;
+            height: 28px;
+            float: none;
+            margin: 0 auto;
+        }
+
+        .topBlock_future_Item p {
+            float: none;
+            padding: 0;
+        }
+
+    .laptop {
+        display: initial;
+    }
+
+    .phone {
+        display: none;
+    }
+
+    .top_footer_container {
+        flex-direction: row;
+    }
+}
+
+
+/* TABLET LANDSCAPE / DESKTOP */
+@media only screen and (min-width: 1100px) {
+
+    .header_container {
+        height: 100px;
+    }
+
+    .header_menu {
+        width: 50%;
+    }
+
+    .header_search {
+        width: 40%;
+    }
+
+    .header_menu_wrapper {
+        padding: 24px 13vw 0 13vw;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    .topBlock_container {
+        flex-direction: row;
+        font-size: 16px;
+    }
+
+    .topBlock_title {
+        text-align: left;
+        margin: initial;
+    }
+
+    .topBlock_future_list {
+        margin: initial;
+    }
+
+    .topBlock_future_Item {
+        text-align: left;
+    }
+
+    .topBlock_picture {
+        width: 40%;
+    }
+
+    .topBlock_info {
+        width: 60%;
+        order: -1;
+    }
+
+    .small_article_container {
+        display: block;
+    }
+
+    .big_article_container {
+        width: 75%;
+    }
+
+    .genres_horizontal_billetBlock {
+        display: none;
+    }
+
+    .books-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

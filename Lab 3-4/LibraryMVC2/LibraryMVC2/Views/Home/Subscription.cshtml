@@ -1,0 +1,43 @@
+﻿@using LibraryMVC2.Models;
+@model SubscriptionViewModel
+@{
+    ViewBag.Title = "Subscription";
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+}
+
+<div class="billetWrapper">
+    <div class="full_article_container">
+        <h2>Подписка</h2>
+        <h3>Каталог</h3>
+        <table class="subscription_catalog">
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Цена</th>
+                    <th>Описание</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (SubscriptionType st in Model.SubscriptionTypes)
+                {
+                    <tr>
+                        <td>@st.Name</td>
+                        <td>@st.Price</td>
+                        <td>@st.Description</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br /><br />
+        <h3>Оформить</h3>
+        @using (Html.BeginForm())
+        {
+            <p>@Html.LabelFor(b => b.SubscriptionForm.Duration)</p>
+            <p>@Html.EditorFor(b => b.SubscriptionForm.Duration, new { htmlAttributes = new { min = 1, max = 12 } })</p>
+            <p>@Html.LabelFor(b => b.SubscriptionForm.SelectedType)</p>
+            <p>@Html.DropDownListFor(b => b.SubscriptionForm.SelectedType, Model.SubscriptionForm.SubscriptionTypes)</p>
+            <input type="submit" value="Оформить" />
+        }
+        <br /><br />
+    </div>
+</div>

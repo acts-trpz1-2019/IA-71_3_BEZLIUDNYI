@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="LibraryMVC2.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ProjectPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Users\Yurets\source\repos\LibraryMVC\LibraryMVC</Value>
+    </Setting>
+    <Setting Name="TextBooksFilePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Users\Yurets\source\repos\LibraryMVC\LibraryMVC\Content\custom\files\TextBooks</Value>
+    </Setting>
+    <Setting Name="AudioBooksFilePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Users\Yurets\source\repos\LibraryMVC\LibraryMVC\Content\custom\files\AudioBooks</Value>
+    </Setting>
+    <Setting Name="BookCoveringsFilePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">\Content\custom\images\book_coverings</Value>
+    </Setting>
+    <Setting Name="GenreCoveringsFilePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">\Content\custom\images\icons</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

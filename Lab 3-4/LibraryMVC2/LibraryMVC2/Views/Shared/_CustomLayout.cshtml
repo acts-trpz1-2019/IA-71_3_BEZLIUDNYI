@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LitNet - @ViewBag.Title</title>
+    @Styles.Render("~/Content/custom/css")
+</head>
+<body>
+    <div class="appContainer">
+        <header>
+            <div class="header_container">
+                <div class="header_logo">
+                    <img src="~/Content/custom/images/header_logo.png" width="38" height="38">
+                    <a class="header_link" href="@Url.Action("Index", "Home")">LitNet</a>
+                </div>
+                <div class="header_menu_wrapper">
+                    <div class="header_search">
+                        @using (Html.BeginForm("MainCatalogBySearch", "Catalog", FormMethod.Get))
+                        {
+                            @Html.TextBox("search")
+                            <input type="submit" value="Search" />
+                        }
+                    </div>
+                    <div class="header_menu">
+                        <ul class="menu_list">
+                            <li>
+                                <a class="header_link" href="@Url.Action("Dashboard", "Home")">Что читать</a>
+                            </li>
+                            <li>
+                                <a class="header_link" href="@Url.Action("MainCatalog", "Catalog")">Библиотека</a>
+                            </li>
+                            <li>
+                                @if (User.IsInRole("admin"))
+                                {
+                                    <a class="header_link" href="@Url.Action("AdminHome", "Home")">Администрирование</a>
+                                }
+                                else
+                                {
+                                    <a class="header_link" href="@Url.Action("Subscription", "Home")">Подписка</a>
+                                }
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header_entrance">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a class="header_link" href="@Url.Action("Login", "Account")">Выйти</a>
+                    }
+                    else
+                    {
+                        <span>
+                            <a class="header_link" href="@Url.Action("Login", "Account")">Войти</a> / 
+                            <a class="header_link" href="@Url.Action("Register", "Account")">Регистрация</a>
+                        </span>
+                    }
+                </div>
+            </div>
+        </header>
+        <div class="article">
+            @RenderBody()
+        </div>
+        <footer>
+            <div class="top_footer">
+                <div class="top_footer_container">
+                    <section class="footer_theme_container">
+                        <h3>Основное</h3>
+                        <ul class="footer_theme_list">
+                            <li class="footer_theme_item">
+                                <a class="footer_theme_link" href="#">О проекте</a>
+                            </li>
+                            <li class="footer_theme_item">
+                                <a class="footer_theme_link" href="#">Условия использования</a>
+                            </li>
+                            <li class="footer_theme_item">
+                                <a class="footer_theme_link" href="#">Правообладателям</a>
+                            </li>
+                            <li class="footer_theme_item">
+                                <a class="footer_theme_link" href="#">Политика конфиденциальности</a>
+                            </li>
+                            <li class="footer_theme_item">
+                                <a class="footer_theme_link" href="#">Помощь</a>
+                            </li>
+                        </ul>
+                    </section>
+                    <section class="footer_theme_container">
+                        <h3>О подписке</h3>
+                        <ul class="footer_theme_list">
+                            <li class="footer_theme_item">
+                                <a class="footer_theme_link" href="#">Подписка</a>
+                            </li>
+                            <li class="footer_theme_item">
+                                <a class="footer_theme_link" href="#">Как оплатить</a>
+                            </li>
+                            <li class="footer_theme_item">
+                                <a class="footer_theme_link" href="#">Ввести подарочный код</a>
+                            </li>
+                            <li class="footer_theme_item">
+                                <a class="footer_theme_link" href="#">Помощь</a>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+            <div class="bottom_footer">
+                <div class="bottom_footer_container">
+                    <div class="contacts">
+                        <p class="contacts_text">
+                            Служба поддержки
+                        </p>
+                        <p class="contacts_phone">
+                            +380972071553
+                        </p>
+                        <p class="contacts_support">
+                            support@litnet.net
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/vendor/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,30 @@
+﻿@using LibraryMVC2.Models
+@model BookPresentationContainer
+@{
+    ViewBag.Title = "EditBook";
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+}
+
+<div class="billetWrapper">
+    <div class="full_article_container">
+        <h2>Редактировать аудиокнигу</h2>
+        @if (Model.Type == "text")
+        {
+            using (Html.BeginForm("SaveTextBookChanges", "ManageModel"))
+            {
+                @Html.EditorFor(b => b.TextBookPresentation)
+                <input type="submit" value="Сохранить" />
+                <br /><br />
+            }
+        }
+        else if (Model.Type == "audio")
+        {
+            using (Html.BeginForm("SaveAudioBookChanges", "ManageModel"))
+            {
+                @Html.EditorFor(b => b.AudioBookPresentation)
+                <input type="submit" value="Сохранить" />
+                <br /><br />
+            }
+        }
+    </div>
+</div>

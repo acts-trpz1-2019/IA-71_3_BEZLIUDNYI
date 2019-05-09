@@ -1,0 +1,154 @@
+﻿@using LibraryMVC2.Models
+@using LibraryMVC2.Helpers
+@model LibraryInfoViewModel
+@{
+    ViewBag.Title = "Главная";
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+}
+
+<div class="topBlock">
+    <div class="topBlock_container">
+        <div class="topBlock_picture">
+            <img src="~/Content/custom/images/man_reading.png" width="300" height="300">
+        </div>
+        <div class="topBlock_info">
+            <div class="topBlock_title">
+                <span>LitNet - читай и слушай по одной подписке</span>
+            </div>
+            <div class="topBlock_future_list">
+                <ul>
+                    <li class="topBlock_future_Item">
+                        <div class="topBlock_future_Item_icon">
+                            <img src="~/Content/custom/images/icons/books.png">
+                        </div>
+                        <p>@LibraryInfoHelper.GetBooksCount() книг</p>
+                    </li>
+                    <li class="topBlock_future_Item">
+                        <div class="topBlock_future_Item_icon">
+                            <img src="~/Content/custom/images/icons/headphones.png">
+                        </div>
+                        <p>@LibraryInfoHelper.GetAudioBooksCount() аудиокниг</p>
+                    </li>
+                    <li class="topBlock_future_Item">
+                        <div class="topBlock_future_Item_icon">
+                            <img src="~/Content/custom/images/icons/star.png">
+                        </div>
+                        <p>+50 новинок каждый месяц</p>
+                    </li>
+                    <li class="topBlock_future_Item">
+                        <div class="topBlock_future_Item_icon">
+                            <img src="~/Content/custom/images/icons/puzzle.png">
+                        </div>
+                        <p>Подборки и рекомендации</p>
+                    </li>
+                    <li class="topBlock_future_Item">
+                        <div class="topBlock_future_Item_icon">
+                            <img src="~/Content/custom/images/icons/wifi.png">
+                        </div>
+                        <p>Офлайн или онлайн</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="topBlock_button_list">
+                <button class="subscription_button">1 месяц за 199 грн.</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="billetWrapper">
+    <div class="full_article_container">
+        @foreach (IndexBookSet bookSet in Model.BookSets)
+        {
+            <div class="billetBlock">
+                <div class="billetBlock_title">
+                    <div class="billetBlock_title_theme">
+                        <p class="left_title">@bookSet.Info[0]</p>
+                        <p class="right_title">
+                            <a class="goto_theme_link" href=@bookSet.ActionLink> > </a>
+                        </p>
+                    </div>
+                    <div class="billetBlock_title_info">
+                        <p>@bookSet.Info[1]</p>
+                    </div>
+                </div>
+                <div class="booksCard_list">
+                    @if (bookSet.Type == "text")
+                    {
+                        foreach (TextBook b in bookSet.TextBooks)
+                        {
+                            <a class="goto_book_link" href="@Url.Action("BookInfo", "Catalog", new { book_id = b.Id, type = "text" })">
+                                <div class="bookCard">
+                                    <div class="bookCard_image">
+                                        <img src=@b.CoverFilePath>
+                                    </div>
+                                    <div class="bookCard_info">
+                                        <h3 class="book_name">@b.BookName</h3>
+                                        <p class="book_author">Автор: @b.Author</p>
+                                        <p class="book_rate">Рейтинг: @b.Rate </p>
+                                        <p class="book_pages">Страниц: @b.Pages</p>
+                                    </div>
+                                </div>
+                            </a>
+                        }
+                    }
+                    else if (bookSet.Type == "audio")
+                    {
+                        foreach (AudioBook b in bookSet.AudioBooks)
+                        {
+                            <a class="goto_book_link" href="@Url.Action("BookInfo", "Catalog", new { book_id = b.Id, type = "audio" })">
+                                <div class="bookCard">
+                                    <div class="bookCard_image">
+                                        <img src=@b.CoverFilePath>
+                                    </div>
+                                    <div class="bookCard_info">
+                                        <h3 class="book_name">@b.BookName</h3>
+                                        <p class="book_author">Автор: @b.Author</p>
+                                        <p class="book_rate">Рейтинг: @b.Rate </p>
+                                        <p class="book_pages">Длительность: @TimeSpan.FromSeconds(b.ReadingTime)</p>
+                                    </div>
+                                </div>
+                            </a>
+                        }
+                    }
+                </div>
+            </div>
+        }
+        @if (Model.Description != null)
+        {
+            <div class="article_text_blocks">
+                @if (Model.Description.Title != null)
+                {
+                    <h2>@Model.Description.Title</h2>
+                }
+                <div class="article_text_divider">
+                    <section class="left_section">
+                        @for (int i = 0; i <= (Model.Description.TitledInfoList.Count - 1) / 2; i++)
+                        {
+                            if (Model.Description.TitledInfoList[i].Title != null)
+                            {
+                                <h3>@Model.Description.TitledInfoList[i].Title</h3>
+                            }
+                            foreach (string infoBlock in Model.Description.TitledInfoList[i].InfoBlocks)
+                            {
+                                <p>@infoBlock</p>
+                            }
+                        }
+                    </section>
+                    <section class="right_section">
+                        @for (int i = (Model.Description.TitledInfoList.Count - 1) / 2 + 1; i < Model.Description.TitledInfoList.Count; i++)
+                        {
+                            if (Model.Description.TitledInfoList[i].Title != null)
+                            {
+                                <h3>@Model.Description.TitledInfoList[i].Title</h3>
+                            }
+                            foreach (string infoBlock in Model.Description.TitledInfoList[i].InfoBlocks)
+                            {
+                                <p>@infoBlock</p>
+                            }
+                        }
+                    </section>
+                </div>
+            </div>
+        }
+    </div>
+</div>

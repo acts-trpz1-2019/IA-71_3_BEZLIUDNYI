@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+html, body{
+    min-width: 300px;
+    width: 100%;
+    margin: 0;
+}
+
+body{
+    overflow-x: auto;
+    background-color: #e6e6e6;
+    color: #737373;
+    font-family: 'Roboto';
+}
+
+.main-container-unwrap{
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    min-height: 50vh;
+}
+
+.main-container-wrap{
+    display: grid;
+    min-height: 50vh;
+}
+
+.page-up, .page-down{
+    position: fixed;
+    top: 50%;
+    display: flex;
+    align-items: center;
+    width: 3vw;
+    height: 8vh;
+    min-width: 30px;
+    min-height: 35px;
+    max-width: 40px;
+    max-height: 50px;
+    background-color: black;
+    opacity: 0.2;
+    transition-property: opacity;
+    transition-duration: 1s;
+}
+
+.page-up a, .page-down a{
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 1.25em;
+}
+
+.page-up:hover, .page-down:hover{
+    opacity: 0.5;
+}
+
+.page-down{
+    left: 0;
+}
+
+.page-up{
+    right: 0;
+}
+
+/*.nav-menu {*/
+    /*position: sticky;*/
+    /*width: 100%;*/
+    /*padding: 2.5vh 0;*/
+    /*z-index: 99999;*/
+    /*background-color: #323232;*/
+/*}*/
+
+/*.nav-menu #menu-links {*/
+    /*display: flex;*/
+    /*width: 100%;*/
+    /*background-color: #323232;*/
+/*}*/
+
+/*#menu-links a {*/
+    /*color: white;*/
+    /*padding: 0 1.2vw;*/
+    /*text-decoration: none;*/
+    /*text-align: center;*/
+    /*font-size: 1em;*/
+/*}*/
+
+/*.nav-menu div.icon {*/
+    /*background: #323232;*/
+    /*position: absolute;*/
+    /*right: 20px;*/
+    /*top: 2.5vh;*/
+/*}*/
+
+/*#menu-links a:hover, .nav-menu div.icon:hover {*/
+    /*color: aqua;*/
+/*}*/
+
+/*#subscriber{*/
+    /*position: fixed;*/
+    /*z-index: 99999;*/
+    /*top: 10vh;*/
+    /*left: 50%;*/
+    /*transform: translateX(-50%);*/
+    /*background-color: white;*/
+    /*box-shadow: gray 3px 5px 5px;*/
+    /*display: none;*/
+/*}*/
+
+/*.subscriber-img{*/
+    /*margin: 5vh auto;*/
+/*}*/
+
+/*.subscriber-img img{*/
+    /*width: 100%;*/
+    /*height: auto;*/
+/*}*/
+
+/*.subscribe-forms{*/
+    /*margin: 3vh auto;*/
+/*}*/
+
+/*.subscribe-forms input{*/
+    /*width: 100%;*/
+/*}*/
+
+/*.subscribe-row{*/
+    /*width: 100%;*/
+    /*padding: 1.5vh 0;*/
+/*}*/
+
+/*.subscribe-row button{*/
+    /*width: 30%;*/
+    /*height: 5vh;*/
+    /*min-height: 30px;*/
+    /*min-width: 50px;*/
+    /*background-color: aqua;*/
+    /*border: none;*/
+    /*border-radius: 5px;*/
+    /*box-shadow: gray 2px 3px 4px;*/
+    /*text-align: center;*/
+    /*font-weight: bold;*/
+    /*font-size: 1em;*/
+/*}*/
+
+/*.subscriber-close{*/
+    /*position: absolute;*/
+    /*width: 16px;*/
+    /*height: 16px;*/
+    /*top: 16px;*/
+    /*right: 16px;*/
+/*}*/
+
+
+@media (min-width: 0) {
+
+    body{
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 0) and (orientation: portrait) {
+
+    .main-container-wrap{
+        grid-template-rows: repeat(2, 100%);
+        grid-template-columns: none;
+    }
+
+    /*.nav-menu{*/
+        /*height: 4vh;*/
+    /*}*/
+
+    /*#menu-links a{*/
+        /*display: block;*/
+        /*font-size: 2em;*/
+        /*height: 5vh;*/
+    /*}*/
+
+    /*#menu-links{*/
+        /*flex-direction: column;*/
+        /*position: absolute;*/
+        /*top: 9vh;*/
+    /*}*/
+
+    /*#subscriber{*/
+        /*width: 80vw;*/
+        /*height: 60vh;*/
+    /*}*/
+
+    /*.subscriber-img {*/
+        /*width: 20%;*/
+    /*}*/
+
+    /*.subscribe-forms{*/
+        /*width: 70%;*/
+    /*}*/
+
+}
+
+@media (min-width: 0) and (orientation: landscape) {
+
+    .main-container-wrap {
+        grid-template-rows: none;
+        grid-template-columns: repeat(2, 50%);
+    }
+
+    /*.nav-menu{*/
+        /*height: 7vh;*/
+    /*}*/
+
+     /*#menu-links{*/
+        /*display: block;*/
+     /*}*/
+
+    /*#subscriber{*/
+        /*width: 60vw;*/
+        /*height: 85vh;*/
+    /*}*/
+
+    /*.subscriber-img {*/
+        /*width: 15%;*/
+    /*}*/
+
+    /*.subscribe-forms{*/
+        /*width: 50%;*/
+    /*}*/
+}
+
+@media (min-width: 576px){
+
+    body{
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 768px){
+
+    body{
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 992px){
+
+    body{
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 768px) and (orientation: landscape) {
+
+    /*#subscriber{*/
+        /*height: 80vh;*/
+    /*}*/
+}

@@ -1,0 +1,86 @@
+html, body{
+    height: 100%;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.right-container, .left-container{
+    padding: 15vh 5vw;
+}
+
+.top-wrapper{
+    float: right;
+}
+
+.right-container .big-text{
+    font-style: italic;
+    font-family: "Times New Roman";
+    margin: 1.5vh 0;
+    border-bottom: 2px solid #737373;
+    font-size: 3.25em;
+}
+
+.content ul{
+    font-size: 0.875em;
+    list-style-type: none;
+    padding: 0;
+}
+
+.content li{
+    margin-left: 5vw;
+    font-weight: bold;
+    padding: 5px 0;
+}
+
+.content li:first-child, .content li:last-child{
+    font-family: "Times New Roman";
+    font-style: italic;
+}
+
+.content li strong{
+    float: right;
+    font-family: "Times New Roman";
+    font-style: italic;
+}
+
+@media (min-width: 0) {
+
+    #first-car{
+        margin-left: 5vw;
+        width: 35vw;
+        height: auto;
+    }
+
+    #second-car{
+        margin-top: 4vh;
+        width: 32vw;
+        height: auto;
+    }
+
+    .top-wrapper{
+        width: 40vw;
+    }
+}
+
+@media(min-width:992px){
+
+    #first-car{
+        margin-left: 5vw;
+        width: 30vw;
+        height: auto;
+    }
+
+    #second-car{
+        margin-top: 6vh;
+        width: 27vw;
+        height: auto;
+    }
+
+    .top-wrapper{
+        width: 32vw;
+    }
+}

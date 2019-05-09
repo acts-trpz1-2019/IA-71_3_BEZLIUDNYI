@@ -1,0 +1,19 @@
+﻿@using LibraryMVC2.Models
+@model Genre
+@{
+    ViewBag.Title = "AddGenre";
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+}
+
+<div class="billetWrapper">
+    <div class="full_article_container">
+        <h2>Добавить жанр</h2>
+        @using (Html.BeginForm("AddGenre", "ManageModel"))
+        {
+        @Html.EditorForModel()
+        <input type="submit" value="Добавить" />
+        <br /><br />
+        }
+    </div>
+</div>
+

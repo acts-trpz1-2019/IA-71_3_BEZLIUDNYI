@@ -1,0 +1,21 @@
+html, body{
+    height: 100%;
+}
+
+body{
+    position: relative;
+    overflow-x: hidden;
+    background-image: url('../images/second/mercedes_benz_green.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#tip{
+    margin: 0;
+    position: absolute;
+    bottom: 3vh;
+    left: 3vw;
+    color: white;
+    font-size: 0.625em;
+}

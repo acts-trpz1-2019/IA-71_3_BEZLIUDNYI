@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "AdminHome";
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+}
+
+<div class="billetWrapper">
+    <div class="full_article_container">
+        <h2>Приветствуем администраторов!!!</h2>
+        @using (Html.BeginForm("AddTextBook", "ManageModel", FormMethod.Get))
+        {
+            <input type="submit" value="Добавить книгу" />
+            <br /><br />
+        }
+        @using (Html.BeginForm("AddAudioBook", "ManageModel", FormMethod.Get))
+        {
+            <input type="submit" value="Добавить аудиокнигу" />
+            <br /><br />
+        }
+        @using (Html.BeginForm("AddGenre", "ManageModel", FormMethod.Get))
+        {
+            <input type="submit" value="Добавить жанр" />
+            <br /><br />
+        }
+    </div>
+</div>
+

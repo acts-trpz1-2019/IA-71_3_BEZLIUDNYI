@@ -1,0 +1,23 @@
+header {
+    text-align: right;
+}
+
+footer .info{
+    float: left;
+}
+
+footer .page{
+    float: right;
+}
+
+.left-container{
+    padding: 10vh 4vw 10vh 4vw;
+}
+
+.right-container{
+    background-color: #a6a6a6;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+

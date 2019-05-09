@@ -1,0 +1,66 @@
+header{
+    text-align: right;
+}
+
+footer .page{
+    float: right;
+    color: black;
+}
+
+.right-container{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.big-text{
+    margin: 1.5vh 0 1.5vh 4vw;
+    border-bottom: 2px solid #737373;
+    font-size: 2em;
+    letter-spacing: 0.3125em;
+    line-height: 2em;
+}
+
+.text-block{
+    max-width: 180px;
+    text-align: justify;
+    float: right;
+}
+
+.content>div{
+    float: right;
+}
+
+#first-block{
+    margin-right: 3vw;
+}
+
+#red-text-block{
+    max-width: 220px;
+    font-family: 'Times New Roman';
+    margin-right: 2vw;
+    color: red;
+    font-style: italic;
+    text-align: right;
+    float: right;
+}
+
+@media (min-width: 0) {
+
+}
+
+@media (min-width: 576px){
+
+}
+
+@media(min-width:768px){
+
+}
+
+@media(min-width:992px){
+
+}
+
+@media(min-width: 1200px) and (orientation: landscape){
+
+}

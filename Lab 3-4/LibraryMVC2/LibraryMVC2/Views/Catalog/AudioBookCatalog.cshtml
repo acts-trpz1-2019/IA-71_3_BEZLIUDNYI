@@ -1,0 +1,35 @@
+﻿@using LibraryMVC2.Helpers
+@using LibraryMVC2.Models
+@model BookSelection
+@{
+    ViewBag.Title = "AudioBookCatalog";
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+}
+
+<div class="billetWrapper">
+    <div class="full_article_container">
+        <div class="books-grid">
+            @foreach (AudioBook b in Model.Books)
+            {
+                <div class="book-item">
+                    <a class="goto_book_link" href="@Url.Action("BookInfo", new { book_id = b.Id, type = "audio" })">
+                        <div class="bookCard">
+                            <div class="bookCard_image">
+                                <img src=@b.CoverFilePath>
+                            </div>
+                            <div class="bookCard_info">
+                                <h3 class="book_name">@b.BookName</h3>
+                                <p class="book_author">Автор: @b.Author</p>
+                                <p class="book_rate">Рейтинг: @b.Rate </p>
+                                <p class="book_pages">Длина: @TimeSpan.FromSeconds(b.ReadingTime)</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+        <div class="paginator">
+            @Html.PageLinks(Model.PageInfo, x => Url.Content(Html.GetPageLink(Model.PageInfo.BaseUrl, x)))
+        </div>
+    </div>
+</div>
