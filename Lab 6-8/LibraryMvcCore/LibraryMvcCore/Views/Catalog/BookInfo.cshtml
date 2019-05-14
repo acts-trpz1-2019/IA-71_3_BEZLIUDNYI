@@ -1,0 +1,94 @@
+﻿@model BookInfoContainerViewModel
+@{
+    ViewBag.Title = "BookInfo";
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+}
+
+<div class="billetWrapper">
+    <div class="full_article_container">
+        <h2>Информация о книге</h2>
+        @if (Model.Type == "text")
+        {
+            <p>Название книги: @Model.TextBook.BookName</p>
+            <p>Автор: @Model.TextBook.Author</p>
+            <p>
+                Жанры:
+                @foreach (Genre g in Model.TextBook.Genres)
+                {
+                    <span>"@g.Name" </span>
+                }
+            </p>
+            <p>Страниц: @Model.TextBook.Pages</p>
+            <p>Год публикации на сайте: @Model.TextBook.PublishingTime.Year</p>
+            if (Model.TextBook.Description != null)
+            {
+                <p>О книге: @Model.TextBook.Description</p>
+            }
+
+            if (Model.IsAccessible)
+            {
+                <form asp-action="ReadBook" asp-controller="Catalog" asp-route-id="@Model.TextBook.BookId">
+                    <input type="submit" value="Читать" />
+                </form>
+            }
+            else
+            {
+                <p class="warning-text">Эта книга доступна только за подпиской "@Model.TextBook.SubscriptionType.Name"</p>
+            }
+            <br />
+            if (User.IsInRole("admin"))
+            {
+                <form asp-action="EditTextBook" asp-controller="ManageModel" asp-route-id="@Model.TextBook.BookId">
+                    <input type="submit" value="Редактировать" />
+                </form>
+                <br />
+                <form asp-action="DeleteTextBook" asp-controller="ManageModel" asp-route-id="@Model.TextBook.BookId">
+                    <input type="submit" value="Удалить" />
+                </form>
+            }
+        }
+        else if (Model.Type == "audio")
+        {
+            <p>Название аудиокниги: @Model.AudioBook.BookName</p>
+            <p>Автор: @Model.AudioBook.Author</p>
+            <p>
+                Жанры:
+                @foreach (Genre g in Model.AudioBook.Genres)
+                {
+                    <span>"@g.Name" </span>
+                }
+            </p>
+            <p>Длительность: @TimeSpan.FromSeconds(Model.AudioBook.ReadingTime)</p>
+            <p>Год публикации на сайте: @Model.AudioBook.PublishingTime.Year</p>
+            if (Model.AudioBook.Description != null)
+            {
+                <p>О книге: @Model.AudioBook.Description</p>
+            }
+
+            if (Model.IsAccessible)
+            {
+                <form asp-action="ListenBook" asp-controller="Catalog" asp-route-id="@Model.AudioBook.BookId">
+                    <input type="submit" value="Слушать" />
+                </form>
+            }
+            else
+            {
+                <p class="warning-text">Эта аудиокнига доступна только за подпиской "@Model.AudioBook.SubscriptionType.Name"</p>
+            }
+            <br />
+            if (User.IsInRole("admin"))
+            {
+                <form asp-action="EditAudioBook" asp-controller="ManageModel" asp-route-id="@Model.AudioBook.BookId">
+                    <input type="submit" value="Редактировать" />
+                </form>
+                <br />
+                <form asp-action="DeleteAudioBook" asp-controller="ManageModel" asp-route-id="@Model.AudioBook.BookId">
+                    <input type="submit" value="Удалить" />
+                </form>
+            }
+        }
+    </div>
+</div>
+
+
+

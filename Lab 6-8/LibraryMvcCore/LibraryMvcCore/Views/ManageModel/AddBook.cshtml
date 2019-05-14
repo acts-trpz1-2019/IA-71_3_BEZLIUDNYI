@@ -1,0 +1,30 @@
+﻿@model BookInputContainerViewModel
+@{
+    ViewBag.Title = "AddBook";
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+}
+
+<div class="billetWrapper">
+    <div class="full_article_container">
+        <h2>Добавить книгу</h2>
+        @if (Model.Type == "text")
+        {
+            using (Html.BeginForm("AddTextBook", "ManageModel"))
+            {
+                @Html.EditorFor(b => b.TextBookPresentation)
+                <br />
+                <input type="submit" value="Добавить" />
+            }
+        }
+        else if (Model.Type == "audio")
+        {
+            using (Html.BeginForm("AddAudioBook", "ManageModel"))
+            {
+                @Html.EditorFor(b => b.AudioBookPresentation)
+                <br />
+                <input type="submit" value="Добавить" />
+            }
+        }
+        <br /><br />
+    </div>
+</div>

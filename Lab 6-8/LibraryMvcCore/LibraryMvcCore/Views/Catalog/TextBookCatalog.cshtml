@@ -1,0 +1,31 @@
+﻿@model BookCatalogViewModel
+@addTagHelper "*, LibraryMvcCore"
+@{
+    ViewBag.Title = "TextBookCatalog";
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+}
+
+<div class="billetWrapper">
+    <div class="full_article_container">
+        <div class="books-grid">
+            @foreach (TextBook b in Model.Books)
+            {
+                <div class="book-item">
+                    <a class="goto_book_link" asp-controller="Catalog" asp-action="BookInfo" asp-route-book_id="@b.BookId" asp-route-type="text">
+                        <div class="bookCard">
+                            <div class="bookCard_image">
+                                <img src=@Url.Content(b.CoverFilePath)>
+                            </div>
+                            <div class="bookCard_info">
+                                <h3 class="book_name">@b.BookName</h3>
+                                <p class="book_author">Автор: @b.Author</p>
+                                <p class="book_pages">Страниц: @b.Pages</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+        <page-link class="paginator" page-model="Model.PageInfo"></page-link>
+    </div>
+</div>

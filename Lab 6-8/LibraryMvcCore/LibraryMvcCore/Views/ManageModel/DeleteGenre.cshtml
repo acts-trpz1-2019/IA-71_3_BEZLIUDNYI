@@ -1,0 +1,18 @@
+﻿@model DeleteGenreViewModel
+@{
+    ViewData["Title"] = "DeleteGenre";
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+}
+
+<div class="billetWrapper">
+    <div class="full_article_container">
+        <h2>Удалить жанр</h2>
+        @using (Html.BeginForm("DeleteGenre", "ManageModel"))
+        {
+            @Html.DropDownListFor(g => g.GenreName, Model.GenreNames)
+            <br /><br />
+            <input type="submit" value="Удалить" />
+        }
+        <br />
+    </div>
+</div>
